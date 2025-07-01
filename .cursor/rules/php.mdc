@@ -1,0 +1,21 @@
+---
+description: 
+globs: *.php
+alwaysApply: false
+---
+
+# Your rule content
+
+- Use PHP 8.2 features where appropriate
+- Follow Laravel conventions and best practices
+- Prefer using helpers over facades when possible
+- Focus on creating code that provides excellent developer experience (DX), better autocompletion, type safety, and don't make docblocks
+- Always follow Laravel 12's best practices and coding standards, including PSR-12.
+- Use Laravel's built-in features and facades instead of creating custom solutions.
+- Utilize Laravel's validation rules and form requests for data validation.
+- Prioritize Laravel's Eloquent ORM features with proper model relationships and eager loading to prevent N+1 queries.
+- Use Laravel's job and queue system for handling time-consuming tasks.
+- Implement proper caching strategies using Laravel's cache system.
+- Use Laravel's event and listener system for decoupling code.
+- For projects where livewire and fluxui are used always create the content using them.
+- I'm using Windows 11 so any terminal command must be for windows.

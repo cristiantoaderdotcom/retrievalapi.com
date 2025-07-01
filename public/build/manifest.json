@@ -1,0 +1,22 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app2.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "css": [
+      "assets/app2.css"
+    ]
+  },
+  "resources/js/embed/embed.js": {
+    "file": "assets/embed.js",
+    "name": "embed",
+    "src": "resources/js/embed/embed.js",
+    "isEntry": true
+  }
+}

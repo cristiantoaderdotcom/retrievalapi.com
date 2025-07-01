@@ -1,0 +1,14 @@
+{
+    "indentSize": 1,
+    "wrapAttributes": "auto",
+    "wrapAttributesMinAttrs": 3,
+    "wrapLineLength": 160,
+    "endWithNewLine": true,
+    "noMultipleEmptyLines": true,
+    "useTabs": true,
+    "sortTailwindcssClasses": true,
+    "sortHtmlAttributes": "alphabetical",
+    "noPhpSyntaxCheck": false,
+    "noSingleQuote": false,
+    "indentInnerHtml": true
+}

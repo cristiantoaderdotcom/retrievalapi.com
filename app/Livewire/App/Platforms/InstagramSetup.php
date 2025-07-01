@@ -1,0 +1,81 @@
+<?php
+
+namespace App\Livewire\App\Platforms;
+
+use Livewire\Component;
+use App\Models\Workspace;
+use App\Models\InstagramPage;
+use Illuminate\Support\Str;
+use Livewire\Attributes\Locked;
+use Illuminate\Support\Facades\Redirect;
+
+class InstagramSetup extends Component
+{
+    #[Locked]
+    public Workspace $workspace;
+    
+    #[Locked]
+    public $instagramPage;
+    
+    public $page_name = '';
+    public $page_id = '';
+    public $page_access_token = '';
+    public $handle_messages = true;
+    public $handle_comments = true;
+    
+    public function mount(string $uuid)
+    {
+        $this->workspace = Workspace::query()
+            ->where('uuid', $uuid)
+            ->where('user_id', auth()->id())
+            ->firstOrFail();
+        
+        // Check if workspace already has an Instagram page
+        if ($existingPage = $this->workspace->instagramPage) {
+            // If the page is complete, redirect to the main Instagram page
+            if ($existingPage->page_name && $existingPage->page_access_token) {
+                return redirect()->route('app.workspace.platforms.instagram', ['uuid' => $this->workspace->uuid]);
+            }
+            
+            // Use existing page if it's incomplete
+            $this->instagramPage = $existingPage;
+            
+            // Pre-populate form fields if there's any data
+            if ($existingPage->page_name) $this->page_name = $existingPage->page_name;
+            if ($existingPage->page_id) $this->page_id = $existingPage->page_id;
+            if ($existingPage->page_access_token) $this->page_access_token = $existingPage->page_access_token;
+            $this->handle_messages = $existingPage->handle_messages;
+            $this->handle_comments = $existingPage->handle_comments;
+        } else {
+            // Create a new empty Instagram page record
+            $this->instagramPage = InstagramPage::create([
+                'user_id' => auth()->id(),
+                'workspace_id' => $this->workspace->id,
+                'uuid' => Str::uuid(),
+                'page_verify_token' => Str::random(32),
+                'is_active' => false,
+            ]);
+        }
+    }
+    
+    public function render()
+    {
+        return view('livewire.app.platforms.instagram-setup')
+            ->extends('layouts.app')
+            ->section('main');
+    }
+    
+    public function update()
+    {
+        $this->instagramPage->update([
+            'page_name' => $this->page_name,
+            'page_id' => $this->page_id,
+            'page_access_token' => $this->page_access_token,
+            'handle_messages' => $this->handle_messages,
+            'handle_comments' => $this->handle_comments,
+            'is_active' => true,
+        ]);
+        
+        return redirect()->route('app.workspace.platforms.instagram', ['uuid' => $this->workspace->uuid]);
+    }
+}

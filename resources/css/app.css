@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@import '../../vendor/livewire/flux/dist/flux.css';
+@source "../views";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@theme {
+    --color-zinc-50: var(--color-slate-50);
+    --color-zinc-100: var(--color-slate-100);
+    --color-zinc-200: var(--color-slate-200);
+    --color-zinc-300: var(--color-slate-300);
+    --color-zinc-400: var(--color-slate-400);
+    --color-zinc-500: var(--color-slate-500);
+    --color-zinc-600: var(--color-slate-600);
+    --color-zinc-700: var(--color-slate-700);
+    --color-zinc-800: var(--color-slate-800);
+    --color-zinc-900: var(--color-slate-900);
+    --color-zinc-950: var(--color-slate-950);
+}
+
+@theme {
+    --color-accent: var(--color-emerald-600);
+    --color-accent-content: var(--color-emerald-600);
+    --color-accent-foreground: var(--color-white);
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-emerald-600);
+        --color-accent-content: var(--color-emerald-400);
+        --color-accent-foreground: var(--color-white);
+    }
+}
+
+
+
+@theme {
+	--font-sans: "Plus Jakarta Sans", sans-serif;
+	--text-xxs: 0.6rem;
+	--text-xxs--line-height: 0.7rem;
+
+	--breakpoint-xs: 425px;
+
+    --animate-sticky-accent: sticky-accent 1s linear 0s 1 normal none running;
+
+    @keyframes sticky-accent {
+		0% {
+			filter: drop-shadow(rgba(0, 0, 0, 0.08) -2px 10px 6px);
+		}
+		75% {
+			filter: drop-shadow(rgba(0, 0, 0, 0.08) -2px 10px 6px);
+		}
+		99% {
+			filter: none;
+		}
+		
+	}
+}
+
+@layer base {
+	button {
+		cursor: pointer;
+	}
+}
+
+@layer utilities {
+	td.sticky {
+		@apply right-0 bg-white dark:bg-zinc-900 animate-sticky-accent;
+		animation-timeline: scroll(inline);
+	}
+
+	.scroller {
+		scrollbar-width: thin;
+	}
+}

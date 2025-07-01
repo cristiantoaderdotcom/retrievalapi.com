@@ -1,0 +1,60 @@
+---
+description: 
+globs: *.blade.php
+alwaysApply: false
+---
+# Laravel Blade with FluxUI Rules
+
+## FluxUI Component Usage
+
+- Use `<flux:` components for all UI elements rather than raw HTML.
+- Use heroicons without the `heroicon-` prefix (e.g., `icon="check"` not `icon="heroicon-check"`).
+- Never use `variant="secondary"` on any FluxUI components, use appropriate alternatives.
+- Never use `size` attributes on any FluxUI components - use Tailwind classes for sizing instead.
+- For spacing and layout, use Tailwind classes rather than custom CSS.
+- Use `wire:model` for data binding with Livewire components.
+- Use `wire:click` for event handling with Livewire components.
+
+## Blade Template Structure
+
+- Always include `@fluxAppearance` in the `<head>` section of your layout.
+- Always include `@fluxScripts` before the closing `</body>` tag.
+- Use `@csrf` in all forms for security.
+- Use `@method` for non-GET/POST form methods.
+- Use `@livewire` to include Livewire components.
+
+## FluxUI Component Specific Rules
+
+- For forms, always wrap form elements in a `<flux:field>` component for consistent styling.
+- For buttons, prefer `variant="primary"` for main actions and `variant="ghost"` for secondary actions.
+- For modals, always use the `name` attribute to enable proper triggering.
+- For notifications, use `<flux:toast>` components rather than JavaScript alerts.
+- For icons, use the direct icon name (e.g., `icon="check"`) without any prefix.
+- For data tables, use `<flux:table>` components with proper `<flux:table.head>` and `<flux:table.body>` structure.
+
+## Livewire Integration
+
+- Use `wire:model` for two-way data binding.
+- Use `wire:click` for event handling.
+- Prefer `wire:model.live` for real-time updates when appropriate.
+- Use `$wire` in Alpine.js expressions to access Livewire component methods.
+
+## Modal Handling
+
+- Use named modals with `<flux:modal name="modal-name">`.
+- Trigger modals with `<flux:modal.trigger name="modal-name">`.
+- Close modals with `<flux:modal.close>`.
+- For programmatic control, use `$flux.modal('name').show()` and `$flux.modal('name').close()`.
+
+## FluxUI Authentication 
+
+- Use `<flux:brand>` for the app logo and branding.
+- Use `<flux:navbar>` for navigation headers with proper structure.
+- Use `<flux:profile>` for user profile displays.
+- Use `@auth` and `@guest` directives for authentication-based content.
+
+# Your rule content
+- Use heroicons but without heroicon- prefix.
+- Never use variant="secondary" on any <flux> components
+- Never use size attributes on any <flux> components
+- Never use size="lg" on any <flux> components

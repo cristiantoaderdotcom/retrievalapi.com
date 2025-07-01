@@ -1,0 +1,31 @@
+{
+	"tabWidth": 4,
+	"useTabs": true,
+	"endOfLine": "lf",
+	"printWidth": 100,
+	"semi": true,
+	"singleQuote": false,
+	"trailingComma": "es5",
+	"proseWrap": "preserve",
+	"overrides": [{
+			"files": "*.md",
+			"options": {
+				"proseWrap": "never"
+			}
+		},
+		{
+			"files": ["*.yml", "*.yaml"],
+			"options": {
+				"tabWidth": 2,
+				"useTabs": false
+			}
+		},
+		{
+			"files": "docker-compose.yml",
+			"options": {
+				"tabWidth": 4,
+				"useTabs": false
+			}
+		}
+	]
+}
